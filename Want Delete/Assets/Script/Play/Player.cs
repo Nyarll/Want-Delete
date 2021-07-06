@@ -6,7 +6,10 @@ public class Player : MonoBehaviour
 {
     private Transform camera;
 
-    float runSpeed = 0.2f;
+    public float runSpeed = 0.2f;
+    public float jumpPower = 2.0f;
+
+    bool isJump = false;
 
 
     // Start is called before the first frame update
@@ -25,6 +28,17 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Move();
+        Jump();
+    }
+
+    void Update()
+    {
+        
+    }
+
+    void Move()
+    {
         float InputH = Input.GetAxis("Horizontal");
         float InputV = Input.GetAxis("Vertical");
 
@@ -33,18 +47,33 @@ public class Player : MonoBehaviour
 
         Vector3 velocityV = dir;
         velocityV.Normalize();
-        velocityV /= 5f;
+        velocityV *= runSpeed;
 
         Vector3 velocityH = Quaternion.Euler(0, 90, 0) * dir;
         velocityH.Normalize();
-        velocityH /= 5f;
+        velocityH *= runSpeed;
 
         transform.position += velocityV * InputV;
         transform.position += velocityH * InputH;
     }
 
-    void Update()
+    void Jump()
     {
-        
+        if(!isJump && Input.GetKey(KeyCode.Space))
+        {
+            isJump = true;
+            Vector3 jumpVelocity = new Vector3(0, 1, 0) * jumpPower;
+
+            transform.GetComponent<Rigidbody>().velocity = jumpVelocity;
+            
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag != "Player")
+        {
+            isJump = false;
+        }
     }
 }
