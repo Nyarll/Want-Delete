@@ -9,6 +9,10 @@ public class CameraController : MonoBehaviour
 
     public float rotateSpeed = 2.0f;
 
+    public float angleLimit = 60;
+
+    float angleH = 0, angleV = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +27,32 @@ public class CameraController : MonoBehaviour
 
     void rotateCamera()
     {
-        Vector3 angle = new Vector3(Input.GetAxis("Mouse X") * rotateSpeed,
-            Input.GetAxis("Mouse Y") * rotateSpeed, 0);
+        float mouseInputX = Input.GetAxis("Mouse X");
+        float mouseInputY = Input.GetAxis("Mouse Y");
 
-        mainCamera.transform.RotateAround(target.transform.position, Vector3.up, angle.x);
-        //mainCamera.transform.RotateAround(target.transform.position, transform.right, angle.y);
+        float deltaAngleH = (mouseInputX * 50f / 60f) * rotateSpeed;
+        float deltaAngleV = (-mouseInputY * 50f / 60f) * rotateSpeed;
+
+        angleH += deltaAngleH;
+        angleV += deltaAngleV;
+
+        float clampAngleV = Mathf.Clamp(angleV, 0, 60);
+
+        float overshootV = angleV - clampAngleV;
+
+        deltaAngleV -= overshootV;
+        angleV = clampAngleV;
+
+        Vector3 XRotateAxis = Vector3.Scale(mainCamera.transform.forward, new Vector3(1, 0, 1)).normalized;
+        XRotateAxis = Quaternion.Euler(0, 90, 0) * XRotateAxis;
+
+        Vector3 RotatePoint = target.transform.position;
+        RotatePoint.y += 0.5f;
+
+        // X Axis Rotate
+        mainCamera.transform.RotateAround(RotatePoint, XRotateAxis, deltaAngleV);
+        // Y Axis Rotate
+        mainCamera.transform.RotateAround(RotatePoint, Vector3.up, deltaAngleH);
     }
+
 }

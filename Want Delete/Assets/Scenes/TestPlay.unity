@@ -467,7 +467,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 96866045}
   target: {fileID: 1643118018}
-  rotateSpeed: 20
+  rotateSpeed: 10
+  angleLimit: 60
 --- !u!4 &95265236
 Transform:
   m_ObjectHideFlags: 0
@@ -571,7 +572,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-10606
+  m_Name: pb_Mesh16744
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
