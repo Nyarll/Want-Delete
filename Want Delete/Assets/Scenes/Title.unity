@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 3df47364465ac354197d03dadfa3e9f4, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -505,7 +505,7 @@ Animator:
   m_GameObject: {fileID: 537293877}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dce0d8b62b37f9b42b49799f81c8434d, type: 2}
+  m_Controller: {fileID: 9100000, guid: ef9a3e6d20945014686b9d48c1cf236d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -985,7 +985,7 @@ Animator:
   m_GameObject: {fileID: 1488570793}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2223bd9452b8e7149b05b3a8dfc68381, type: 2}
+  m_Controller: {fileID: 9100000, guid: 520d8090148e09a4e81d51abbeb08695, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2113816709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e5c67fef9d92f7479e46e920ec42c94, type: 3}
+  m_Script: {fileID: 11500000, guid: d8ddcc38b7344a542a6539dad4475a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2113816711
