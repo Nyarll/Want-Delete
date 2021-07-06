@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
 
     bool isJump = false;
 
+    public float deadHeight = -10f;
+
+    public Vector3 respawnPoint;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +27,8 @@ public class Player : MonoBehaviour
         {
             Debug.LogWarning("Warning: No main camera found ! Third person character needs a Camera tagged.");
         }
+
+        respawnPoint = transform.position;
     }
 
     // Update is called once per frame
@@ -30,6 +36,8 @@ public class Player : MonoBehaviour
     {
         Move();
         Jump();
+
+        Fall();
     }
 
     void Update()
@@ -37,6 +45,7 @@ public class Player : MonoBehaviour
         
     }
 
+    // <移動>
     void Move()
     {
         float InputH = Input.GetAxis("Horizontal");
@@ -57,6 +66,7 @@ public class Player : MonoBehaviour
         transform.position += velocityH * InputH;
     }
 
+    // <ジャンプ>
     void Jump()
     {
         if(!isJump && Input.GetKey(KeyCode.Space))
@@ -69,11 +79,25 @@ public class Player : MonoBehaviour
         }
     }
 
+    // <何かに衝突したとき>
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag != "Player")
         {
             isJump = false;
+        }
+    }
+
+    // <一定の高さ以下まで落下したとき>
+    void Fall()
+    {
+        // <死ぬ高さ未満まで落ちたとき>
+        if(transform.position.y < deadHeight)
+        {
+            // <リスポーンポイントに戻す>
+            transform.position = respawnPoint;
+
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 }
