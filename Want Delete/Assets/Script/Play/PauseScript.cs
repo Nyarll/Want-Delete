@@ -25,11 +25,19 @@ public class PauseScript : MonoBehaviour
             {
                 pauseUIInstance = GameObject.Instantiate(pauseUIPrefab) as GameObject;
                 Time.timeScale = 0f;
+
+                // <マウスカーソル固定解除・表示>
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
             else
             {
                 Destroy(pauseUIInstance);
                 Time.timeScale = 1f;
+
+                // <マウスカーソル固定・非表示>
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
     }

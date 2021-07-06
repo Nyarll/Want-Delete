@@ -56,17 +56,19 @@ public class Player : MonoBehaviour
 
         Vector3 dir = transform.position - camera.position;
         dir.y = 0;
+        dir.Normalize();
 
         Vector3 velocityV = dir;
         velocityV.Normalize();
-        velocityV *= runSpeed;
 
         Vector3 velocityH = Quaternion.Euler(0, 90, 0) * dir;
         velocityH.Normalize();
-        velocityH *= runSpeed;
 
-        transform.position += velocityV * InputV;
-        transform.position += velocityH * InputH;
+        Vector3 velocity = (velocityV * InputV) + (velocityH * InputH);
+        velocity.Normalize();
+        velocity *= runSpeed;
+
+        transform.position += velocity;
     }
 
     // <ƒWƒƒƒ“ƒv>

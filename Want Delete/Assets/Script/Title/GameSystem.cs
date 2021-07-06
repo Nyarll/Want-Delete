@@ -17,10 +17,18 @@ public class GameSystem : MonoBehaviour
         
     }
 
+    // <タイトルに戻る>
+    public void ChangeTitle()
+    {
+        SceneManager.LoadScene("Title");
+        Time.timeScale = 1f;
+    }
+
     // <ゲームスタート>
     public void GameStart()
     {
         SceneManager.LoadScene("TestPlay");
+        Time.timeScale = 1f;
     }
 
     // <ゲーム終了>

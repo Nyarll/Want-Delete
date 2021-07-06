@@ -2039,6 +2039,7 @@ GameObject:
   - component: {fileID: 1512330696}
   - component: {fileID: 1512330695}
   - component: {fileID: 1512330697}
+  - component: {fileID: 1512330698}
   m_Layer: 0
   m_Name: GameSystem
   m_TagString: Untagged
@@ -2085,6 +2086,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseUIPrefab: {fileID: 2139772899275139732, guid: 7184090fb0d4ba040b1b4845e784aecb, type: 3}
+--- !u!114 &1512330698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512330694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a979425a1973747889c70e77673abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folderName: Screenshots
 --- !u!1 &1643118018
 GameObject:
   m_ObjectHideFlags: 0
