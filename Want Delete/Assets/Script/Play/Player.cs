@@ -88,6 +88,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "RespawnPoint")
+        {
+            respawnPoint = other.gameObject.transform.position;
+            Destroy(other.gameObject);
+        }
+    }
+
     // <ˆê’è‚Ì‚‚³ˆÈ‰º‚Ü‚Å—Ž‰º‚µ‚½‚Æ‚«>
     void Fall()
     {
