@@ -39,8 +39,10 @@ public class Player : MonoBehaviour
     {
         Move();
         Jump();
+        
 
         Fall();
+
     }
 
     void Update()
@@ -74,13 +76,15 @@ public class Player : MonoBehaviour
     // <ƒWƒƒƒ“ƒv>
     void Jump()
     {
-        if(!isJump && Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
-            isJump = true;
-            Vector3 jumpVelocity = new Vector3(0, 1, 0) * jumpPower;
+            if (!isJump)
+            {
+                isJump = true;
+                Vector3 jumpVelocity = new Vector3(0, 1, 0) * jumpPower;
 
-            transform.GetComponent<Rigidbody>().velocity = jumpVelocity;
-            
+                transform.GetComponent<Rigidbody>().velocity = jumpVelocity;
+            }
         }
     }
 
