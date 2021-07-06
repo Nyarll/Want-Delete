@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
 
     public Vector3 respawnPoint;
 
+    float respawnSaveTime = 2;
+    float saveDeltaTime = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -88,12 +91,25 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if(other.tag == "RespawnPoint")
+        if (other.tag == "RespawnPoint")
         {
-            respawnPoint = other.gameObject.transform.position;
-            Destroy(other.gameObject);
+            if((Input.GetKey(KeyCode.E) || Input.GetMouseButton(0)) && saveDeltaTime <= respawnSaveTime)
+            {
+                saveDeltaTime += Time.deltaTime;
+            }
+            else
+            {
+                saveDeltaTime = 0;
+            }
+
+            if (saveDeltaTime >= respawnSaveTime)
+            {
+                respawnPoint = other.gameObject.transform.position;
+                Destroy(other.gameObject);
+                saveDeltaTime = 0;
+            }
         }
     }
 
