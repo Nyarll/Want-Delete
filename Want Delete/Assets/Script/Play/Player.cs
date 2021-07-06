@@ -5,9 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Transform camera;
-    private Vector3 forword;
-    private Vector3 vel;
-    private Vector3 Animdir = Vector3.zero;
 
     float runSpeed = 0.2f;
 
@@ -28,30 +25,22 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float InputH = Input.GetAxis("Horizontal");
+        float InputV = Input.GetAxis("Vertical");
 
-        if(camera != null)
-        {
-            forword = Vector3.Scale(camera.forward, new Vector3(1, 0, 1)).normalized;
-            vel = v * forword * runSpeed + h * camera.right * runSpeed;
-        }
+        Vector3 dir = transform.position - camera.position;
+        dir.y = 0;
 
-        transform.position = new Vector3
-            (
-            transform.position.x + vel.x,
-            0,
-            transform.position.z + vel.z
-            );
+        Vector3 velocityV = dir;
+        velocityV.Normalize();
+        velocityV /= 5f;
 
-        Vector3 AnimDir = vel;
-        AnimDir.y = 0;
+        Vector3 velocityH = Quaternion.Euler(0, 90, 0) * dir;
+        velocityH.Normalize();
+        velocityH /= 5f;
 
-        if(AnimDir.sqrMagnitude > 0.001)
-        {
-            Vector3 newDir = Vector3.RotateTowards(transform.forward, AnimDir, 5f * Time.deltaTime, 0f);
-            transform.rotation = Quaternion.LookRotation(newDir);
-        }
+        transform.position += velocityV * InputV;
+        transform.position += velocityH * InputH;
     }
 
     void Update()
