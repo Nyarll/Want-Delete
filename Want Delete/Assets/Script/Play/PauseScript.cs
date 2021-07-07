@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviour
 {
@@ -23,7 +24,12 @@ public class PauseScript : MonoBehaviour
         {
             if(pauseUIInstance == null)
             {
+                string nowSceneName = SceneManager.GetActiveScene().name;
+
                 pauseUIInstance = GameObject.Instantiate(pauseUIPrefab) as GameObject;
+                var system = pauseUIInstance.transform.Find("System").GetComponent<GameSystem>();
+                system.GameLevelName = nowSceneName;
+
                 Time.timeScale = 0f;
 
                 // <マウスカーソル固定解除・表示>

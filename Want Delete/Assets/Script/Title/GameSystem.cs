@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameSystem : MonoBehaviour
 {
+
+    [Header("Start Game Level")]
+    [SerializeField]
+    public string GameLevelName = "TestPlay";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +32,7 @@ public class GameSystem : MonoBehaviour
     // <ゲームスタート>
     public void GameStart()
     {
-        SceneManager.LoadScene("TestPlay");
+        SceneManager.LoadScene(GameLevelName); ;
         Time.timeScale = 1f;
     }
 

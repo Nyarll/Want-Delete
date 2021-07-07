@@ -6,14 +6,22 @@ public class Player : MonoBehaviour
 {
     private Transform camera;
 
-    public float runSpeed = 0.2f;
+    [Header("Move")]
+    public float walkSpeed = 0.2f;
+    public float runSpeed = 0.4f;
     public float jumpPower = 2.0f;
 
+    float moveSpeed;
     bool isJump = false;
 
+    [Header("Dead Line")]
     public float deadHeight = -10f;
 
-    public Vector3 respawnPoint;
+    [Header("Look Point")]
+    [SerializeField]
+    GameObject LookPoint;
+
+    Vector3 respawnPoint;
 
     float respawnSaveTime = 2;
     float saveDeltaTime = 0;
@@ -32,15 +40,18 @@ public class Player : MonoBehaviour
         }
 
         respawnPoint = transform.position;
+        moveSpeed = walkSpeed;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        DirectionFix();
+
+        IsRun();
         Move();
         Jump();
         
-
         Fall();
 
     }
@@ -68,7 +79,7 @@ public class Player : MonoBehaviour
 
         Vector3 velocity = (velocityV * InputV) + (velocityH * InputH);
         velocity.Normalize();
-        velocity *= runSpeed;
+        velocity *= moveSpeed;
 
         transform.position += velocity;
     }
@@ -130,5 +141,22 @@ public class Player : MonoBehaviour
 
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
+    }
+
+    void IsRun()
+    {
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            moveSpeed = runSpeed;
+        }
+        else
+        {
+            moveSpeed = walkSpeed;
+        }
+    }
+
+    void DirectionFix()
+    {
+        transform.LookAt(LookPoint.transform);
     }
 }
