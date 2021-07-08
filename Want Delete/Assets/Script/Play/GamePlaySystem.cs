@@ -15,14 +15,14 @@ public class GamePlaySystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Approximately(Time.timeScale, 0f))
-        {
-            return;
-        }
-
         if (Input.GetKeyDown(KeyCode.P))
         {
             GetComponent<ScreenShot>().PrintScreen();
+        }
+
+        if (Mathf.Approximately(Time.timeScale, 0f))
+        {
+            return;
         }
     }
 }
