@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 public class Clear : MonoBehaviour
 {
 
-    [SerializeField]
-    string nextLevelName = "Title";
+    public string nextLevelName = "Title";
 
     // Start is called before the first frame update
     void Start()

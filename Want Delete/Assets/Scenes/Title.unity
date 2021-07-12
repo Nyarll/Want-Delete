@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ddcc38b7344a542a6539dad4475a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameLevelName: TestPlay
+  GameLevelName: Level0
 --- !u!4 &2113816711
 Transform:
   m_ObjectHideFlags: 0

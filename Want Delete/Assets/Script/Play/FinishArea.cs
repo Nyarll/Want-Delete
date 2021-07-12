@@ -33,6 +33,8 @@ public class FinishArea : MonoBehaviour
             if (clearUIInstance == null)
             {
                 clearUIInstance = GameObject.Instantiate(clearUIPrefab) as GameObject;
+                GameObject system = clearUIInstance.transform.Find("System").gameObject;
+                system.GetComponent<Clear>().nextLevelName = NextLevel;
             }
         }
     }
