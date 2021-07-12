@@ -183,8 +183,8 @@ Camera:
   m_GameObject: {fileID: 1216514456107602573}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.7877358, g: 0.870283, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -277,6 +277,7 @@ MonoBehaviour:
   jumpPower: 5
   deadHeight: -10
   LookPoint: {fileID: 1216514455146318171}
+  system: {fileID: 0}
 --- !u!54 &23297626453345171
 Rigidbody:
   m_ObjectHideFlags: 0
