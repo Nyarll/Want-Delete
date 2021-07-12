@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Hierarchy
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 276, y: 131}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 135
+  controlID: 140
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 134
+  controlID: 58
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -699,21 +699,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Script
+    - Assets/Prefab/Play
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Script
+  - Assets/Prefab/Play
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Workspace\Unity\Want-Delete\Want Delete
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 4a430000
-    m_LastClickedID: 17226
+    m_SelectedIDs: b8430000
+    m_LastClickedID: 17336
     m_ExpandedIDs: 00000000484300004a4300004c4300004e43000050430000524300005443000056430000584300005a4300005c43000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -769,7 +769,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -865,7 +865,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 50fbffff
+      m_ExpandedIDs: f0e7ffff0ae8ffff50fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -925,9 +925,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 521.31683, y: 47.12671, z: 1632.6769}
+    m_Target: {x: -1626.1826, y: -553.40424, z: -19.686207}
     speed: 2
-    m_Value: {x: 521.31683, y: 47.12671, z: 1632.6769}
+    m_Value: {x: -14.659587, y: 1.7742391, z: -3.3285482}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -974,13 +974,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.012968052, y: -0.14559835, z: -0.002423339, w: -0.98888224}
+    m_Target: {x: -0.11429156, y: 0.6953431, z: -0.11416157, w: -0.6997576}
     speed: 2
-    m_Value: {x: 0.012972847, y: -0.14565217, z: -0.002424235, w: -0.9892478}
+    m_Value: {x: 0.020754123, y: 0.78619754, z: 0.025256822, w: -0.61711}
   m_Size:
     m_Target: 870.98016
     speed: 2
-    m_Value: 870.98016
+    m_Value: 9.197693
   m_Ortho:
     m_Target: 0
     speed: 2
