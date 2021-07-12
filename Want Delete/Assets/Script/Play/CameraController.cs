@@ -47,16 +47,19 @@ public class CameraController : MonoBehaviour
         float deltaAngleH = (mouseInputX * 50f / 60f) * rotateSpeed;
         float deltaAngleV = (-mouseInputY * 50f / 60f) * rotateSpeed;
 
-        angleH += deltaAngleH;
-        angleV += deltaAngleV;
+        float maxLimit = 30f;
+        float minLimit = 360f - maxLimit;
 
-        float clampAngleV = Mathf.Clamp(angleV, 0, 60);
+        Vector3 localAngle = mainCamera.transform.localEulerAngles;
+        localAngle.x += deltaAngleV;
 
-        float overshootV = angleV - clampAngleV;
+        if ((localAngle.x > maxLimit && localAngle.x < 180f) || (localAngle.x < minLimit && localAngle.x > 180f))
+        {
+            deltaAngleV = 0;
+        }
 
-        deltaAngleV -= overshootV;
-        angleV = clampAngleV;
 
+        // <c‚Ì‰ñ“]Ž²>
         Vector3 XRotateAxis = Vector3.Scale(mainCamera.transform.forward, new Vector3(1, 0, 1)).normalized;
         XRotateAxis = Quaternion.Euler(0, 90, 0) * XRotateAxis;
 
@@ -74,29 +77,12 @@ public class CameraController : MonoBehaviour
     void rotateLookPoint()
     {
         float mouseInputX = Input.GetAxis("Mouse X");
-        float mouseInputY = Input.GetAxis("Mouse Y");
 
         float deltaAngleH = (mouseInputX * 50f / 60f) * rotateSpeed;
-        float deltaAngleV = (-mouseInputY * 50f / 60f) * rotateSpeed;
-
-        angleH += deltaAngleH;
-        angleV += deltaAngleV;
-
-        float clampAngleV = Mathf.Clamp(angleV, 0, 60);
-
-        float overshootV = angleV - clampAngleV;
-
-        deltaAngleV -= overshootV;
-        angleV = clampAngleV;
-
-        Vector3 XRotateAxis = Vector3.Scale(lookPoint.transform.forward, new Vector3(1, 0, 1)).normalized;
-        XRotateAxis = Quaternion.Euler(0, 90, 0) * XRotateAxis;
 
         Vector3 RotatePoint = target.transform.position;
         RotatePoint.y += 0.5f;
 
-        // X Axis Rotate
-        //lookPoint.transform.RotateAround(RotatePoint, XRotateAxis, deltaAngleV);
         // Y Axis Rotate
         lookPoint.transform.RotateAround(RotatePoint, Vector3.up, deltaAngleH);
 
