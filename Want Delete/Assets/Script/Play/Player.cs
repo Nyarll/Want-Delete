@@ -21,6 +21,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     GameObject LookPoint;
 
+    [Header("GameSystem")]
+    [SerializeField]
+    GameObject system;
+
+    Vector3 firstRespawnPoint;
     Vector3 respawnPoint;
 
     float respawnSaveTime = 2;
@@ -40,6 +45,7 @@ public class Player : MonoBehaviour
         }
 
         respawnPoint = transform.position;
+        firstRespawnPoint = respawnPoint;
         moveSpeed = walkSpeed;
     }
 
@@ -124,7 +130,7 @@ public class Player : MonoBehaviour
             if (saveDeltaTime >= respawnSaveTime)
             {
                 respawnPoint = other.gameObject.transform.position;
-                Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
                 saveDeltaTime = 0;
             }
         }
@@ -139,7 +145,12 @@ public class Player : MonoBehaviour
             // <リスポーンポイントに戻す>
             transform.position = respawnPoint;
 
+            // <利用できるリスポーンを消費>
+            respawnPoint = firstRespawnPoint;
+
             GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+            system.GetComponent<GamePlaySystem>().PlayerFalls();
         }
     }
 

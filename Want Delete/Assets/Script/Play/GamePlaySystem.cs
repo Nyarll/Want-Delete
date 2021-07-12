@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class GamePlaySystem : MonoBehaviour
 {
+
+    [Header("Object to be reappeared")]
+    [SerializeField]
+    GameObject disappearingObjects;
+    [SerializeField]
+    GameObject respawnPointObjects;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +30,20 @@ public class GamePlaySystem : MonoBehaviour
         if (Mathf.Approximately(Time.timeScale, 0f))
         {
             return;
+        }
+    }
+
+    public void PlayerFalls()
+    {
+        // <ÄoŒ»>
+        foreach(Transform item in disappearingObjects.transform)
+        {
+            item.gameObject.SetActive(true);
+        }
+
+        foreach(Transform respawn in respawnPointObjects.transform)
+        {
+            respawn.gameObject.SetActive(true);
         }
     }
 }

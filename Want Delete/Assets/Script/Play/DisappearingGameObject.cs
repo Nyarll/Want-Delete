@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DisappearingGameObject : MonoBehaviour
 {
+
+    bool isDisable = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +21,11 @@ public class DisappearingGameObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // <ƒvƒŒƒCƒ„[‚ªG‚Á‚½‚çŽ©ŒÈ”j‰ó>
+        // <ƒvƒŒƒCƒ„[‚ªG‚Á‚½‚ç>
         if(collision.gameObject.tag == "Player")
         {
-            Destroy(this.gameObject);
+            isDisable = true;
+            gameObject.SetActive(false);
         }
     }
 }
