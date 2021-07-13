@@ -32,8 +32,6 @@ public class Ship : MonoBehaviour
             return;
         }
 
-        Vector3 pos = transform.position;
-
         float moveDirection = Mathf.Sin(moveDir);
         moveDir += Time.deltaTime;
 
@@ -46,20 +44,20 @@ public class Ship : MonoBehaviour
         transform.position += moveVelociy;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            var parent = other.gameObject.transform.parent;
+            var parent = collision.gameObject.transform.parent;
             parent.SetParent(gameObject.transform);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            var parent = other.gameObject.transform.parent;
+            var parent = collision.gameObject.transform.parent;
             parent.SetParent(null);
         }
     }
