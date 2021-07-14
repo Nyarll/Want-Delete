@@ -8,12 +8,14 @@ public class GameSystem : MonoBehaviour
 
     [Header("Start Game Level")]
     [SerializeField]
-    public string GameLevelName = "TestPlay";
+    public string GameLevelName = "Level0";
+
+    FadeSystem fadeSystem;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        fadeSystem = GameObject.Find("FadeSystem").GetComponent<FadeSystem>();
     }
 
     // Update is called once per frame
@@ -25,15 +27,17 @@ public class GameSystem : MonoBehaviour
     // <タイトルに戻る>
     public void ChangeTitle()
     {
-        SceneManager.LoadScene("Title");
         Time.timeScale = 1f;
+        fadeSystem.FadeOutStart("Title");
+        //SceneManager.LoadScene("Title");
     }
 
     // <ゲームスタート>
     public void GameStart()
     {
-        SceneManager.LoadScene(GameLevelName); ;
         Time.timeScale = 1f;
+        fadeSystem.FadeOutStart(GameLevelName);
+        //SceneManager.LoadScene(GameLevelName);
     }
 
     // <ゲーム終了>

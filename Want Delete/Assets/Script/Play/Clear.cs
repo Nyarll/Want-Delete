@@ -20,7 +20,9 @@ public class Clear : MonoBehaviour
         // <エンターキーが押されたら>
         if(Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene(nextLevelName);
+            FadeSystem fade = GameObject.Find("FadeSystem").GetComponent<FadeSystem>();
+            fade.FadeOutStart(nextLevelName);
+
             // <マウスカーソル固定解除・表示>
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
