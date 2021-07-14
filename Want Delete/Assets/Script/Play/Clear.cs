@@ -21,7 +21,8 @@ public class Clear : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Return))
         {
             FadeSystem fade = GameObject.Find("FadeSystem").GetComponent<FadeSystem>();
-            fade.FadeOutStart(nextLevelName);
+            fade.FadeOutStart();
+            fade.SceneChange(nextLevelName);
 
             // <マウスカーソル固定解除・表示>
             Cursor.lockState = CursorLockMode.None;

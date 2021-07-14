@@ -9388,6 +9388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 5812708173797752644, guid: ffa1c479a28609c41b74ab0c53cfb0b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5812708173797752645, guid: ffa1c479a28609c41b74ab0c53cfb0b5, type: 3}
       propertyPath: fadeImage
       value: 

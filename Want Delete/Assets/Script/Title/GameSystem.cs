@@ -28,7 +28,8 @@ public class GameSystem : MonoBehaviour
     public void ChangeTitle()
     {
         Time.timeScale = 1f;
-        fadeSystem.FadeOutStart("Title");
+        fadeSystem.FadeOutStart();
+        fadeSystem.SceneChange("Title");
         //SceneManager.LoadScene("Title");
     }
 
@@ -36,7 +37,8 @@ public class GameSystem : MonoBehaviour
     public void GameStart()
     {
         Time.timeScale = 1f;
-        fadeSystem.FadeOutStart(GameLevelName);
+        fadeSystem.FadeOutStart();
+        fadeSystem.SceneChange(GameLevelName);
         //SceneManager.LoadScene(GameLevelName);
     }
 

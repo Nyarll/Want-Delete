@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     float moveSpeed;
     bool isJump = false;
 
+    bool isFall = false;
+
     [Header("Dead Line")]
     public float deadHeight = -10f;
 
@@ -139,19 +141,34 @@ public class Player : MonoBehaviour
     // <一定の高さ以下まで落下したとき>
     void Fall()
     {
+        FadeSystem fade = GameObject.Find("FadeSystem").GetComponent<FadeSystem>();
+
         // <死ぬ高さ未満まで落ちたとき>
-        if(transform.position.y < deadHeight)
+        if (transform.position.y < deadHeight)
         {
-            // <リスポーンポイントに戻す>
-            transform.position = respawnPoint;
+            isFall = true;
 
-            // <利用できるリスポーンを消費>
-            respawnPoint = firstRespawnPoint;
+            //fade.FadeOutStart();
 
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //if(!fade.IsFadeOut() && isFall)
+            {
+                isFall = false;
 
-            system.GetComponent<GamePlaySystem>().PlayerFalls();
+                // <リスポーンポイントに戻す>
+                transform.position = respawnPoint;
+
+                // <利用できるリスポーンを消費>
+                respawnPoint = firstRespawnPoint;
+
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+                system.GetComponent<GamePlaySystem>().PlayerFalls();
+
+                //fade.FadeInStart();
+            }
         }
+
+        
     }
 
     void IsRun()
